@@ -1,0 +1,45 @@
+
+
+   <div id="bg">
+
+  <div class="add1"> <label  >Player name:
+      <input type="text" #playerName id="playerN" maxlength="16" placeholder="nombre" required ng-pattern="/^[a-zA-Z]*$/"/>
+    </label>
+  </div>
+      
+        <div class="add2">
+    <label>Player dorsal:
+            <input type="number" #playerDorsal id="playerD" minlength="1" maxlenght="2" placeholder="dorsal" required/>
+          </label>
+          </div>
+
+
+<table class="add3" >
+  <tr >
+    <td>Player position: </td>
+  
+    <!--<label>Player position:
+        <input #playerPosition id="player" />
+    </label>-->
+      <td> 
+        <form>
+         <input type="radio" value="Portero" id="playerP" [(ngModel)]="Position"> Portero <br>
+          <input type="radio" value="Defensa" id="playerP"   [(ngModel)]="Position"> Defensa <br>
+          <input type="radio" value="Medio" id="playerP"   [(ngModel)]="Position"> Medio <br>
+          <input type="radio" value="Delantero" id="playerP"  [(ngModel)]="Position"> Delantero<br>
+          </form>
+  </td>
+        </tr>
+</table>
+
+  
+
+<div>
+    <button (click)="add(playerName.value, playerDorsal.value, Position.value)">
+      add player 
+    </button>
+      <button (click)="goBack()">go back</button>
+</div>
+</div>
+<!-- add(playerDorsal.value); playerDorsal.value='', 
+    add(playerPosition.value); playerPosition.value=''" -->

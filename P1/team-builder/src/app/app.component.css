@@ -1,0 +1,51 @@
+/* AppComponent's private CSS styles */
+h1 {
+    font-size: 1.2em;
+    margin-bottom: 0;
+  }
+  h2 {
+    font-size: 2em;
+    margin-top: 0;
+    padding-top: 0;
+  }
+  nav a {
+    padding: 5px 10px;
+    text-decoration: none;
+    margin-top: 15px;
+    display: inline-block;
+
+    border-radius: 4px;
+    margin-bottom: 1%;
+  }
+  nav a:visited, a:link {
+    color: #2d4550;
+  }
+  nav a:hover {
+    color: #FFCC00;
+
+  }
+  nav a.active {
+    color: #039be5;
+  }
+
+  .footer{
+    margin-bottom: 0%;
+  }
+
+  #psearch{
+    float: right;
+    margin-top: -3.15%;
+    background: #369;
+
+  }
+
+  .n{
+    background: #369;
+  }
+
+  html{
+    margin-right: 1.5%;
+    margin-left: 1.5%;
+    margin-bottom: -13%;
+  }
+

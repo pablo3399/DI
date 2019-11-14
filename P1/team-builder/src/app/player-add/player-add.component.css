@@ -1,0 +1,35 @@
+#playerN{
+    list-style-position: inherit;
+    margin-left: 1%;
+
+}
+
+#playerD{
+    list-style-position: inherit;
+
+    margin-left: 0.75%;
+
+}
+
+#bg{
+    background: #CCCCFF;
+    margin-right:46%;
+    margin-top: 6%;
+    color:black;
+   margin-left: 30%;
+}
+.add1{
+    margin-left: 1.3%;
+    margin-top: 1%
+}
+.add2{
+    margin-left: 1.3%;
+    margin-bottom: 1%;
+    margin-top: 1%;
+}
+.add3{
+    margin-left: 1.3%;
+    margin-bottom: 1%;
+}
+
+
