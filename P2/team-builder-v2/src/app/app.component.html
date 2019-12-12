@@ -1,0 +1,50 @@
+<html>
+
+<h1>{{title}}</h1>
+<mat-tab-group >
+        <mat-tab label="Home">
+            <div id="tabs">
+               Link a: <a routerLink="/home-component"><button class="btn">Home</button></a>
+            </div>
+        </mat-tab>
+        <mat-tab label="Dashboard">
+            <div id = "tabs">
+          Link a: <a routerLink="/dashboard"><button class="btn">Dashboard</button></a>
+        </div>
+        </mat-tab>
+        <mat-tab label="Players">
+            <div id="tabs">
+                Link a:<a routerLink="/players"><button class="btn">Players</button></a> 
+        </div>
+        </mat-tab>
+        <mat-tab>
+             <div id="psearch">
+                        <app-player-search></app-player-search>
+                        </div>
+        </mat-tab>
+      </mat-tab-group>
+<!--<nav>
+    <div class="n">
+     <a routerLink="/home-component">Home</a> 
+    <a routerLink="/dashboard">Dashboard</a>
+    <a routerLink="/players">Players</a> 
+    </div>
+    <div id="psearch">
+    <app-player-search></app-player-search>
+    </div>
+</nav> -->
+
+<nav mat-tab-nav-bar>
+    <a mat-tab-link
+       [routerLink]="home-component"
+    >home
+    </a>
+    <a mat-tab-link
+       [routerLink]="players"
+    >players
+    </a>
+  </nav>
+
+<router-outlet></router-outlet>
+</html>
+<app-footer></app-footer>

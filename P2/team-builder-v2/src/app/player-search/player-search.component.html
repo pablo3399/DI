@@ -1,0 +1,16 @@
+<div id="search-component">
+  
+    <div>
+      <input type="radio" value="nombre" [(ngModel)]="rVal" > nombre 
+      <input type="radio" value="dorsal" [(ngModel)]="rVal" > dorsal 
+    </div>
+    <input #searchBox (input)="search(searchBox.value, rVal.value)" />
+  
+    <ul class="search-result">
+      <li *ngFor="let player of players$ | async" >
+        <a routerLink="/detail/{{player.id}}">
+          {{player.name}}
+        </a>
+      </li>
+    </ul>
+  </div>

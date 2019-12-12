@@ -1,0 +1,44 @@
+
+
+   <div id="bg">
+
+  <div class="add1"> <label  >Player name:
+      <input type="text" #playerName id="playerN" maxlength="16" placeholder="nombre" required ng-pattern="/^[a-zA-Z]*$/"/>
+    </label>
+  </div>
+      
+        <div class="add2">
+    <label>Player dorsal:
+            <input type="number" #playerDorsal id="playerD" minlength="1" maxlenght="2" placeholder="dorsal" required/>
+          </label>
+          </div>
+
+
+<!--<table class="add3" >
+  <tr >
+    <td>Player position: </td>
+      <td> 
+        <form>
+         <input type="radio" value="Portero" id="playerP" [(ngModel)]="Position"> Portero <br>
+          <input type="radio" value="Defensa" id="playerP"   [(ngModel)]="Position"> Defensa <br>
+          <input type="radio" value="Medio" id="playerP"   [(ngModel)]="Position"> Medio <br>
+          <input type="radio" value="Delantero" id="playerP"  [(ngModel)]="Position"> Delantero<br>
+          </form>
+  </td>
+        </tr>
+</table>-->
+
+<mat-radio-group name="opciones" [(ngModel)]="operacionSeleccionada">
+  Posicion: 
+  <mat-radio-button class="radio" *ngFor="let op of tipoOperaciones" name="opciones" [value]="op"  style="margin: 10px">
+    {{op}}
+  </mat-radio-button>
+</mat-radio-group>
+
+<div>
+    <button mat-raised-button color="primary" (click)="operar()" (click)="add(playerName.value, playerDorsal.value)">add player</button>
+      <button (click)="goBack()">go back</button>
+</div>
+</div>
+<!-- add(playerDorsal.value); playerDorsal.value='', 
+    add(playerPosition.value); playerPosition.value=''" -->
