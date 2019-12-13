@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Player } from '../player';
 import { PlayerService } from '../player.service';
 import { Location } from '@angular/common';
-import { FormsModule } from '@angular/forms'
+import { FormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms'
+import { group } from '@angular/animations';
 
 
 @Component({
@@ -13,12 +14,13 @@ import { FormsModule } from '@angular/forms'
 export class PlayerAddComponent implements OnInit {
 
   players: Player[];
-
+//https://academia-binaria.com/formularios-reactivos-con-Angular/
   delantero=null;
   defensa=null;
   portero=null;
   medio=null;
   resultado=null;
+  user:FormGroup;
 
   operacionSeleccionada: string = 'Delantero';
   tipoOperaciones = [
@@ -43,10 +45,17 @@ export class PlayerAddComponent implements OnInit {
   }
 
   constructor(private playerService: PlayerService,
-    private location: Location) { }
+    private location: Location, private fb:FormBuilder) { }
 
   ngOnInit() {
     this.getPlayers();
+
+    this.user=this.fb.group({
+      name1:['',[Validators.minLength(2),Validators.maxLength(16), Validators.required]],
+      name2:['',[Validators.minLength(1),Validators.maxLength(2), Validators.required]],
+      radios:['Delantero'],
+    });
+
   }
 
   getPlayers(): void {
