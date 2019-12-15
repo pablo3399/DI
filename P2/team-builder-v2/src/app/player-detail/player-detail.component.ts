@@ -3,6 +3,7 @@ import { Player } from '../player';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { PlayerService } from '../player.service';
+import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-player-detail',
@@ -11,17 +12,18 @@ import { PlayerService } from '../player.service';
 })
 export class PlayerDetailComponent implements OnInit {
   @Input() player: Player;
+  user:FormGroup;
   
   ngOnInit() {
     this.getPlayer();  
+    this.user=this.fb.group({
+      name1:['',[Validators.minLength(2),Validators.maxLength(16), Validators.required]],
+      name2:['',[Validators.minLength(1),Validators.maxLength(2), Validators.required]],
+      radios:[[Validators.required]],
+    });
   }
 
-  delantero=null;
-  defensa=null;
-  portero=null;
-  medio=null;
   resultado=null;
-  
 
   position : string ;
 
@@ -50,7 +52,8 @@ export class PlayerDetailComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private playerService: PlayerService,
-    private location: Location
+    private location: Location,
+    private fb:FormBuilder,
   ) { }
 
   getPlayer(): void {

@@ -4,6 +4,7 @@
     padding: 0;
     width: 18em;
     margin-bottom: auto;
+    color: #2a3a36;
   }
   .players li {
     cursor: pointer;
@@ -16,7 +17,7 @@
     border-radius: 4px;
   }
   .players li:hover {
-    color: #607D8B;
+    color: #a7ead7;
     background-color: #DDD;
     left: .1em;
   }
@@ -29,14 +30,14 @@
     color: white;
   }
   .players a {
-    color: #333;
+    color: #333; /*letras pre*/
     text-decoration: none;
     position: relative;
     display: block;
     width: 250px;
   }
   .players a:hover {
-    color:#607D8B;
+    color:#607D8B; /*letras*/
   }
   .players .badge {
     display: inline-block;
@@ -72,16 +73,20 @@
     position: relative;
     left: 194px;
     top: -32px;
-    background-color: gray !important;
-    color: white;
+    background-color: #9dcfc1 !important;
+    color: #2a3a36;
     margin-left: 16%;
   }
 
   .margins{
-    overflow-y: auto;
-    height: 70%;
-    margin-left: 38%;
-    margin-right: 42%;
+    margin-left: 42%;
+    margin-right: 40%;
     margin-top: 1%;
+    margin-bottom: 3%;
+  }
+
+  #badge{
+    color:#2a3a36;
+    background: #9dcfc1;
   }
   

@@ -22,7 +22,7 @@
     (click)="onSelect(player)">
     -->
     <a routerLink="/detail/{{player.id}}">
-        <span class = "badge">Dorsal: {{player.dorsal}}</span>
+        <span class = "badge" id="badge">Dorsal: {{player.dorsal}}</span>
         {{player.name}}
     </a>
     
@@ -34,6 +34,8 @@
 <app-player-detail [player]="selectedPlayer"></app-player-detail>
 
 </div>
+
+
 <!--
     ***Now all of this will go to Players-detail component***
 <div *ngIf="selectedPlayer">

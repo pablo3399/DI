@@ -31,16 +31,16 @@
   .module {
     padding: 20px;
     text-align: center;
-    color: #eee;
+    color: #2a3a36;
     max-height: 120px;
     min-width: 120px;
-    background-color: #3f525c;
+    background-color: #d7a7ea;
     border-radius: 2px;
   }
   .module:hover {
-    background-color: #eee;
+    background-color: #417a6d;
     cursor: pointer;
-    color: #607d8b;
+    color: #ead7a7;
   }
   .grid-pad {
     padding: 10px 0;
@@ -60,4 +60,8 @@
     .module {
       min-width: 60px;
     }
+  }
+  #margen{
+    margin-bottom: 32%;
+    margin-top: 1%;
   }

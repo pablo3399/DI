@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output } from '@angular/core';
 
 import { Observable, Subject } from 'rxjs';
 
@@ -8,6 +8,7 @@ import {
 
 import { Player } from '../player';
 import { PlayerService } from '../player.service';
+
 
 @Component({
   selector: 'app-player-search',

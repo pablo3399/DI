@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output } from '@angular/core';
 import { Player } from '../player';
 import { PlayerService } from '../player.service';
 import { Location } from '@angular/common';
 import { FormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms'
-import { group } from '@angular/animations';
+import { AppComponent } from '../app.component';
+
 
 
 @Component({
@@ -15,13 +16,8 @@ export class PlayerAddComponent implements OnInit {
 
   players: Player[];
 //https://academia-binaria.com/formularios-reactivos-con-Angular/
-  delantero=null;
-  defensa=null;
-  portero=null;
-  medio=null;
   resultado=null;
   user:FormGroup;
-
   operacionSeleccionada: string = 'Delantero';
   tipoOperaciones = [
     'Portero',
@@ -85,5 +81,6 @@ export class PlayerAddComponent implements OnInit {
   goBack(): void {
     this.location.back();
   }
+
 }
 

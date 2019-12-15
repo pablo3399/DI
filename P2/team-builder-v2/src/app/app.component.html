@@ -1,19 +1,8 @@
-<html>
+<html (click)="onChange()" class="html">
 
 <h1>{{title}}</h1>
 
-<!--<nav>
-    <div class="n">
-     <a routerLink="/home-component">Home</a> 
-    <a routerLink="/dashboard">Dashboard</a>
-    <a routerLink="/players">Players</a> 
-    </div>
-    <div id="psearch">
-    <app-player-search></app-player-search>
-    </div>
-</nav> -->
-
-<nav mat-tab-nav-bar>
+<nav mat-tab-nav-bar >
     <a mat-tab-link
        routerLink="home-component"
     >Home
@@ -26,9 +15,9 @@
        routerLink="players"
     >Players
     </a>
-    <app-player-search></app-player-search>
+    <app-player-search class="playerS" *ngIf="show, hidden"></app-player-search>
   </nav>
 
 <router-outlet></router-outlet>
+<app-footer class="footer"></app-footer>
 </html>
-<app-footer></app-footer>

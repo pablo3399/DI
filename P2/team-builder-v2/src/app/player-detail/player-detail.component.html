@@ -1,35 +1,51 @@
 <div class="bg" *ngIf="player">
 
-    <h2>{{player.name | uppercase}} Details</h2>
-    <div><span>id: </span>{{player.id}}</div>
-    <div>
-      <label>name:
-        <input [(ngModel)]="player.name" placeholder="name"/>
+  <h2>{{player.name | uppercase}} Details</h2>
+  <div><span>id: </span>{{player.id}}</div>
+  <form novalidate [formGroup]="user">
+
+    <div class="add1"> <label>Player name:
+        <input type="text" [(ngModel)]="player.name" formControlName="name1" placeholder="2-16 characters"/>
+
+        <div class="error" *ngIf="user.get('name1').hasError('required') && user.get('name1').touched">
+          Nombre requerido.
+        </div>
+        <div class="error" *ngIf=" user.get('name1').hasError('minlength') && user.get('name1').touched">
+          No cumples con el mínimo de caracteres.
+        </div>
+
+        <div class="error" *ngIf=" user.get('name1').hasError('maxlength') && user.get('name1').touched">
+          Superas el máximo de caracteres.
+        </div>
+
       </label>
     </div>
 
-   <!-- <div>
-        <label>position:
-          <input type="radio" value="Portero" [(ngModel)]="player.position"> Portero 
-          <input type="radio" value="Defensa"  [(ngModel)]="player.position" > Defensa 
-          <input type="radio" value="Medio"  [(ngModel)]="player.position" > Medio 
-          <input type="radio" value="Delantero" [(ngModel)]="player.position" > Delantero
-        </label>
-      </div>    -->
-
-      <mat-radio-group name="opciones" [(ngModel)]="player.position">
-          Posicion: 
-          <mat-radio-button *ngFor="let op of Posiciones" name="opciones" [value]="op" >
-            {{op}}
-          </mat-radio-button>
-        </mat-radio-group>
+    <div class="add2">
+      <label>Player dorsal:
+        <input type="number" [(ngModel)]="player.dorsal" id="playerD" formControlName="name2"
+          placeholder="2 digits max" />
+        <div class="error" *ngIf="user.get('name2').hasError('required') && user.get('name2').touched">
+          Dorsal requerido.
+        </div>
+      </label>
+    </div>
+    <div>
 
 
-      <div>
-        <label>dorsal:
-          <input type="number" [(ngModel)]="player.dorsal" placeholder="dorsal"/>
-        </label>
-      </div>
-      <button (click)="save()">save</button>
-      <button (click)="goBack()">go back</button>
-  </div>
+      <mat-radio-group [(ngModel)]="player.position" formControlName="radios">
+        Posicion:
+        <mat-radio-button *ngFor="let op of Posiciones" name="opciones" [value]="op">
+          {{op}}
+        </mat-radio-button>
+      </mat-radio-group>
+
+
+    </div>
+    <div>
+      <button mat-raised-button id="save" type="submit" [disabled]="user.invalid"
+        (click)="operar(); save()">save</button>
+        <button mat-raised-button id="save" (click)="goBack()">go back</button>
+    </div>
+  </form>
+</div>

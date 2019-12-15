@@ -1,31 +1,46 @@
+<div id="bg">
+
+  <form novalidate [formGroup]="user">
+
+    <div class="add1"> <label>Player name:
+        <input type="text" #playerName id="playerN" formControlName="name1" placeholder="2-16 characters" />
+        <div class="error" *ngIf="user.get('name1').hasError('required') && user.get('name1').touched">
+          Nombre requerido.
+        </div>
+        <div class="error" *ngIf=" user.get('name1').hasError('minlength') && user.get('name1').touched">
+          No cumples con el mínimo de caracteres.
+        </div>
+
+        <div class="error" *ngIf=" user.get('name1').hasError('maxlength') && user.get('name1').touched">
+          Superas el máximo de caracteres.
+        </div>
+
+      </label>
+    </div>
 
 
-   <div id="bg">
+    <div class="add2">
+      <label>Player dorsal:
+        <input type="number" #playerDorsal id="playerD" formControlName="name2" placeholder="2 digits max" />
 
-    <form novalidate (ngSubmit)="onSubmit()"  [formGroup]="user">
+        <div class="error" *ngIf="user.get('name2').hasError('required') && user.get('name2').touched">
+          Dorsal requerido.
+        </div>
 
-  <div class="add1"> <label>Player name:
-      <input type="text" #playerName id="playerN" formControlName="name1"/>
-    </label>
-  </div>
-      
-        <div class="add2">
-    <label>Player dorsal:
-            <input type="number" #playerDorsal id="playerD" formControlName="name2"/>
-          </label>
-          </div>
-
-<mat-radio-group name="opciones" [(ngModel)]="operacionSeleccionada" formControlName="radios">
-  Posicion:
-  <mat-radio-button class="radio" *ngFor="let op of tipoOperaciones" name="opciones" [value]="op"  style="margin: 10px" >
-    {{op}}
-  </mat-radio-button>
-</mat-radio-group>
-
-<div>
-    <button mat-raised-button color="primary" type="submit" [disabled]="user.invalid" (click)="operar(); add(playerName.value, playerDorsal.value)">add player</button>
-      <button (click)="goBack()">go back</button>
+      </label>
+    </div>
+    <div>
+      <mat-radio-group name="opciones" [(ngModel)]="operacionSeleccionada" formControlName="radios">
+        <label class="texto">Posiciones:</label>
+        <mat-radio-button class="radio" *ngFor="let op of tipoOperaciones" name="opciones" [value]="op">
+          {{op}}
+        </mat-radio-button>
+      </mat-radio-group>
+    </div>
+    <div>
+      <button mat-raised-button id="save" type="submit" [disabled]="user.invalid"
+        (click)="operar(); add(playerName.value, playerDorsal.value)">add player</button>
+        <button mat-raised-button id="save" (click)="goBack()">go back</button>
+    </div>
+  </form>
 </div>
-</form>
-</div>
-

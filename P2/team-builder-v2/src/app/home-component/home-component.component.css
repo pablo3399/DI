@@ -1,14 +1,19 @@
 .texto{
     font-size: 140%;
-    margin-left: 2%;
+    margin-left: 4%;
     margin-top: 3%;
     margin-right: 15%;
+    color: #2a3a36;
 }
 
 h1{
-    color: #369;
+    color: #f12a30;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 250%;
     margin-left: 2%;
     margin-top: 3%;
+}
+#margen{
+    margin-bottom: 18%;
+    margin-top: 1%;
 }
