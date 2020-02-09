@@ -1,0 +1,66 @@
+span{
+    font-size: large;
+}
+
+.body{
+    margin-top: 4%;
+    text-align: center;
+}
+
+.map{
+    width: 90%;
+    height: 60%;
+    text-align: center;
+}
+
+.mapG{
+    display: none;
+}
+
+.footer{
+    position: fixed;
+    bottom: 0;
+}
+
+.iframe{
+    text-align: center;
+    
+}
+
+@media(min-width:415px){
+    span{
+        font-size: larger;
+    }
+    .body{
+        margin-top: 2%;
+        margin-bottom: 10%;
+    }
+    .mapG{
+        display: block;
+        text-align: center;
+        margin:auto;
+        width: 90%;
+
+    }
+    .map{
+        display: none;
+    }
+}
+
+@media(min-width:1920px){
+    span{
+        font-size: larger;
+    }
+    .body{
+        margin-top: 2%;
+    }
+    .mapG{
+        display: block;
+        text-align: center;
+        margin:auto;
+        width: 80%;
+    }
+    .map{
+        display: none;
+    }
+}

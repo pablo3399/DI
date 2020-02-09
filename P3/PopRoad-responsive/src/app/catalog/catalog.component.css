@@ -1,0 +1,38 @@
+.body{
+    margin-bottom: 5%;
+    text-align: center;
+}
+
+.pop{
+
+    height: 60%;
+    width: 60%;
+}
+
+footer{
+    position: absolute;
+    bottom: 0;
+}
+
+
+@media(min-width:415px){
+
+    .footer{
+        position: fixed;
+        bottom: 0;
+    }
+}
+
+
+@media(min-width:1940px){
+
+    .footer{
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+    }
+
+
+
+}
+

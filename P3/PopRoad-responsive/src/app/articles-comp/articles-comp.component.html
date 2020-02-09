@@ -1,0 +1,17 @@
+
+<div class="body">
+ <div>
+    <img class="articles-img" src={{articles.images}}></div>
+
+ <h2>{{articles.title | uppercase}}</h2>
+ <div><span>{{articles.subtitle}}</span></div>
+
+ <button (click)="goBack()">irse</button>
+</div>
+<!--<mat-nav-list>
+    <mat-list-item *ngFor="let link of links">
+       <button mat-icon-button (click)="showInfo(link)">
+          <mat-icon>info</mat-icon>
+       </button>
+    </mat-list-item>
+  </mat-nav-list>-->
