@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">SI VEO A TU MAMA - Bad bunny</string>
+    <string name="add_button">Añadir</string>
+    <string name="update_button">Editar</string>
+    <string name="delete_button">Borrar</string>
+    <string name="fab">Añadir</string>
+    <string name="title_activity_transition_add">Añadir Nombre</string>
+</resources>
