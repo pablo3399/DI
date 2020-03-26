@@ -20,6 +20,7 @@
     <item name="light_green" type="color">#689F38</item>
     <item name="teal" type="color">#009688</item>
     <item name="pink" type="color">#E91E63</item>
+    <item name="gray" type="color">#795F5858</item>
 
     <integer-array name="initial_colors">
         <item>@color/blue</item>

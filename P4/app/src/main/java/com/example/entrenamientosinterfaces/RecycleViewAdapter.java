@@ -6,6 +6,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
+import android.view.ContextMenu;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewAnimationUtils;
@@ -25,7 +26,7 @@ public class RecycleViewAdapter extends RecyclerView.Adapter<RecycleViewAdapter.
         private static final String DEBUG_TAG = "TrainingRecycleAdapter"; //ingles pq sino da error por ser muy grande
 
         public Context context;
-        private DBManager gestorDB = new DBManager(context);
+        private DBManager gestorDB;
         public ArrayList<Entrenamiento> listaEntrenamientos;
 
         public RecycleViewAdapter(Context context, ArrayList<Entrenamiento> listaEntrenamientos) {
@@ -131,7 +132,8 @@ public class RecycleViewAdapter extends RecyclerView.Adapter<RecycleViewAdapter.
             return new ViewHolder(v);
         }
 
-        public class ViewHolder extends RecyclerView.ViewHolder {
+
+    public class ViewHolder extends RecyclerView.ViewHolder {
             private TextView initial;
             private TextView name;
             private Button deleteButton;
@@ -177,5 +179,6 @@ public class RecycleViewAdapter extends RecyclerView.Adapter<RecycleViewAdapter.
                 });
             }
         }
+
     }
 

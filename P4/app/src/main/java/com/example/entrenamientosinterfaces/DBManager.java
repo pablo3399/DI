@@ -15,6 +15,14 @@ public class DBManager extends SQLiteOpenHelper {
     public static final String DB_NOMBRE = "ListaEntrenamientos";
     public static final int DB_VERSION = 1;
 
+    public static final String TABLA_CONFIGURATION = "configuracion";
+    public static final String CONFIGURATION_COL_ID = "id";
+    public static final String CONFIGURATION_COL_NOMBRE = "nombre";
+    public static final String CONFIGURATION_COL_EDAD = "edad";
+    public static final String CONFIGURATION_COL_NACIONALIDAD = "nacionalidad";
+    public static final String CONFIGURATION_COL_LENGUAJE = "lenguaje";
+
+
     public static final String TABLA_ENTRENAMIENTO = "entrenamientos";
     public static final String ENTRENAMIENTO_COL_ID = "_id";
     public static final String ENTRENAMIENTO_COL_NOMBRE = "nombre";
@@ -48,6 +56,18 @@ public class DBManager extends SQLiteOpenHelper {
                     + ENTRENAMIENTO_COL_KILOMETROS + " int, "
                     + ENTRENAMIENTO_COL_METROS + " int, "
                     + ENTRENAMIENTO_COL_TIPO + " string(25)  NOT NULL) ");
+
+            db.execSQL("CREATE TABLE IF NOT EXISTS " + TABLA_CONFIGURATION + "( "
+                    + CONFIGURATION_COL_ID + " int NOT NULL DEFAULT 0,"
+                    + CONFIGURATION_COL_NOMBRE + " string(25) NOT NULL, "
+                    + CONFIGURATION_COL_EDAD + " int DEFAULT 00, "
+                    + CONFIGURATION_COL_NACIONALIDAD + " string(20) NOT NULL, "
+                    + CONFIGURATION_COL_LENGUAJE + " string(25) NOT NULL) ");
+
+            db.execSQL("INSERT INTO " +TABLA_CONFIGURATION +" ( "+ CONFIGURATION_COL_NOMBRE +","+
+                    CONFIGURATION_COL_NACIONALIDAD + "," + CONFIGURATION_COL_LENGUAJE+ " ) "
+                    + "VALUES ( '"+ "Nombre"+"','"+ "España"+"','"+"español"+"' )");
+
             db.setTransactionSuccessful();
         } catch (SQLException exc) {
             Log.e("DBManager.onCreate", exc.getMessage());
@@ -84,6 +104,41 @@ public class DBManager extends SQLiteOpenHelper {
                 null, null, null, null, null, null);
     }
 
+    public Cursor getConf() {
+
+        return this.getReadableDatabase().query(TABLA_CONFIGURATION,
+                null, null, null, null, null, null);
+    }
+
+    public void modificarConfiguration(int id, String nombre, int edad, String nacionalidad, String lenguaje){
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        Cursor cursor = null;
+
+        values.put(CONFIGURATION_COL_NOMBRE, nombre);
+        values.put(CONFIGURATION_COL_EDAD, edad);
+        values.put(CONFIGURATION_COL_NACIONALIDAD, nacionalidad);
+        values.put(CONFIGURATION_COL_LENGUAJE, lenguaje);
+
+        try {
+            db.beginTransaction();
+            cursor = db.query(TABLA_CONFIGURATION, null, null, null, null,
+                    null, null);
+
+            db.update(TABLA_CONFIGURATION, values, CONFIGURATION_COL_ID + "=?", new String[]{String.valueOf(id)});
+
+            db.setTransactionSuccessful();
+        } catch (SQLException exc) {
+            Log.e("DBManager.modifica", exc.getMessage());
+        } finally {
+            if (cursor != null) {
+                cursor.close();
+            }
+
+            db.endTransaction();
+        }
+    }
 
     public void insertaEntrenamiento(String nombre, String fecha, int horas, int minutos, int segundos, int kilometros, int metros, String tipo) {
 
@@ -91,8 +146,6 @@ public class DBManager extends SQLiteOpenHelper {
                 +" ( "+ENTRENAMIENTO_COL_NOMBRE+","+ENTRENAMIENTO_COL_FECHA+","+ENTRENAMIENTO_COL_HORAS+","+ ENTRENAMIENTO_COL_MINUTOS+ ","+ENTRENAMIENTO_COL_SEGUNDOS+","+
                               ENTRENAMIENTO_COL_KILOMETROS+","+ ENTRENAMIENTO_COL_METROS+","+ENTRENAMIENTO_COL_TIPO+" ) "+
                 "VALUES ( '"+nombre+"','"+fecha+"',"+horas+","+minutos+","+segundos+","+kilometros+","+metros+",'"+tipo+"'"+")";
-        System.out.println(insert.toString());
-
 
         SQLiteDatabase db = this.getWritableDatabase();
         /* ContentValues values = new ContentValues();
@@ -107,8 +160,6 @@ public class DBManager extends SQLiteOpenHelper {
         values.put(ENTRENAMIENTO_COL_KILOMETROS, kilometros);
         values.put(ENTRENAMIENTO_COL_METROS, metros);
         values.put(ENTRENAMIENTO_COL_TIPO, tipo);*/
-
-        System.out.println("VES IAGO QUE SI ETA ENTRANDO MECAGOENDIOSESTOYMAMADISIMO");
 
         try {
             db.beginTransaction();
@@ -151,7 +202,7 @@ public class DBManager extends SQLiteOpenHelper {
         return toret;
     }
 
-    public void modificaContacto(int id, String nombre, String fecha, int horas, int minutos, int segundos, int kilometros, int metros, String tipo) {
+    public void modificaEntrenamiento(int id, String nombre, String fecha, int horas, int minutos, int segundos, int kilometros, int metros, String tipo) {
 
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
@@ -160,7 +211,8 @@ public class DBManager extends SQLiteOpenHelper {
         values.put(ENTRENAMIENTO_COL_NOMBRE, nombre);
         values.put(ENTRENAMIENTO_COL_FECHA, fecha);
         values.put(ENTRENAMIENTO_COL_HORAS, horas);
-        values.put(ENTRENAMIENTO_COL_SEGUNDOS, minutos);
+        values.put(ENTRENAMIENTO_COL_MINUTOS, minutos);
+        values.put(ENTRENAMIENTO_COL_SEGUNDOS, segundos);
         values.put(ENTRENAMIENTO_COL_KILOMETROS, kilometros);
         values.put(ENTRENAMIENTO_COL_METROS, metros);
         values.put(ENTRENAMIENTO_COL_TIPO, tipo);
@@ -182,6 +234,7 @@ public class DBManager extends SQLiteOpenHelper {
 
             db.endTransaction();
         }
+
 
     }
 }

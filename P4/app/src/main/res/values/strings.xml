@@ -1,8 +1,14 @@
 <resources>
-    <string name="app_name">SI VEO A TU MAMA - Bad bunny</string>
+    <string name="app_name">Entrenamientos de nadador</string>
     <string name="add_button">Añadir</string>
     <string name="update_button">Editar</string>
     <string name="delete_button">Borrar</string>
     <string name="fab">Añadir</string>
-    <string name="title_activity_transition_add">Añadir Nombre</string>
+    <string name="title_activity_transition_add">Añadir Entrenamiento</string>
+    <string name="title_activity_conf">Informacion del usuario</string>
+    <string name="eliminar">Eliminar</string>
+    <string name="modificar">Modificar</string>
+    <string name="anhadir">Añadir</string>
+    <string name="stats">Estadísticas</string>
+    <string name="conf">Configuración</string>
 </resources>
