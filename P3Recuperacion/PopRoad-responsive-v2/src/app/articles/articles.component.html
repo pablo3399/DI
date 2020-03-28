@@ -1,0 +1,29 @@
+
+    <div id="margen">
+
+      <div class="grid grid-pad">
+
+        <a *ngFor="let articles of articles" class="col-1-2"
+              routerLink="/articlesComp/{{articles.id}}">
+          <div >
+            <img class="articles-img" src={{articles.images}}>
+            </div>
+            <div class="articles-texto">
+            <span class="title">{{articles.title}}</span><br>
+                <span class="subtitle">{{articles.subtitle}}</span>
+          </div>
+        </a>
+     <div class="pagi">
+      <nav aria-label="Page navigation example">
+          <ul class="pagination">
+            <li class="page-item" ><button (click)="mostrarMas(1)">1</button></li>
+            <li class="page-item" ><button (click)="mostrarMas(2)">2</button></li>
+            <li class="page-item" ><button (click)="mostrarMas(3)">3</button></li>
+          </ul>
+        </nav>
+       </div>
+      </div>
+      </div>
+
+
+

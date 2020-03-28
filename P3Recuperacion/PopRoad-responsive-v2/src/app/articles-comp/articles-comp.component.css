@@ -1,0 +1,56 @@
+.body{
+    text-align: center;
+}
+
+.articles-img{
+
+    width: 50%;
+    height: 50%;
+    margin-bottom: auto;
+    margin-top: auto;
+}
+
+#divBtn{
+        margin-top: 3%;
+    text-align: center;
+    margin-bottom: 2%;
+}
+#btn{
+    padding: .6rem 1rem;
+    border: 1px solid #995309;
+    border-radius: 4px;
+    background-color: #1fe9df;
+    color: #fff;
+  
+    font-size: 1.5rem;
+    text-shadow: 0 -1px 0 rgba(0,0,0,.5);
+    box-shadow: 0 1px 0 rgba(255,255,255,.5) inset,
+      0 1px 3px rgba(0,0,0,.2);
+    background-image: linear-gradient(rgb(0, 255, 149) 10%,#00e7a2 100%);
+}
+
+
+
+.com_title{
+    text-align: center;
+}
+.comentario{
+    margin-top: 7%;
+}
+
+.comentarios{
+    margin-left: 4%;
+    border-style: solid;
+    width: 90%;
+}
+
+.img_user{
+    width: 50%;
+    height: 50%;
+}
+
+.campo{
+    border: none;
+    border-bottom: 1px solid;
+    font-size: larger;
+}

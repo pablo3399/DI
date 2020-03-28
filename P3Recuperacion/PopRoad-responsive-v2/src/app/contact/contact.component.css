@@ -1,0 +1,17 @@
+#comentario{
+    
+    height: 9em;
+    width: 320px;
+    
+}
+
+footer{
+    position: absolute;
+    bottom: 0;
+}
+@media(min-width:415px){
+    #comentario{
+        height: 10em;
+        width: 400px;
+    }
+}

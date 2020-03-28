@@ -1,0 +1,37 @@
+.texto{
+    text-align: center;
+}
+
+.articles-img{
+
+    width: 50%;
+    height: 50%;
+}
+
+#margen{
+    text-align: center;
+    margin-bottom: 10%;
+}
+.articles-texto{
+    font-size: 30px;
+}
+
+.title{
+    color:black;
+}
+
+.subtitle{
+    color:rgba(0, 0, 0, 0.774);
+}
+
+.pagi{
+    float: right;
+    margin-right: 2%;
+}
+
+@media(min-width:415px){
+    .articles-img{
+        width: 40%;
+        height: 40%;
+    }
+}

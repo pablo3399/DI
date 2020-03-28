@@ -1,0 +1,21 @@
+
+#sidebar{
+    margin-right: 4%;
+    position: fixed;
+    margin-top: 13%;
+    display: none;
+    font-size: large;   
+    border: 3px double #795cbd;
+    padding: -1%;
+   text-align: center;
+}
+
+#text{
+    color: #2f37b5;
+}
+
+@media(min-width: 415px){
+    #sidebar{
+       display: block;
+    }
+}

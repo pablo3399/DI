@@ -1,0 +1,55 @@
+ul.navega li{
+    display: inline;
+}
+
+.text1{
+    display: none;
+}
+
+.text2{
+    display: block;
+    margin-top: -4%;
+}
+
+.twitter{
+    margin-right: -2%;
+}
+.instagram{
+    width: 7.5%;
+    height: 7.5%;
+}
+.twitter, .facebook, .copy{
+    width: 10%;
+    height: 10%;
+    text-align: center;
+}
+
+footer {
+    background: gainsboro;
+    text-align: center;
+    width: 100%;
+}
+
+@media(min-width:415px){
+
+    .twitter{
+        margin-right: -1%;
+    }
+    .twitter, .facebook, .copy{
+        width: 5%;
+        height: 5%;
+        text-align: center;
+    }
+
+    .instagram{
+
+        width: 3.5%;
+        height: 3.5%;
+    }
+    .text1{
+        display: block;
+    }
+    .text2{
+        display: none;
+    }
+}

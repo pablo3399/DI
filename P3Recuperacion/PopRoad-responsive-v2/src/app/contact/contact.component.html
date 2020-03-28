@@ -1,0 +1,98 @@
+<div id="bg">
+
+    <form novalidate class="text-center border border-light p-5" [formGroup]="user">
+  
+      <div class="add1"> <label>Nombre:
+          <input type="text" #nombre id="nombre" class="form-control mb-4" formControlName="nombre" placeholder="2-16 characters" />
+          <div class="error" *ngIf="user.get('nombre').hasError('required') && user.get('nombre').touched">
+            Nombre requerido.
+          </div>
+          <div class="error" *ngIf=" user.get('nombre').hasError('minlength') && user.get('nombre').touched">
+            No cumples con el mínimo de caracteres.
+          </div>
+  
+          <div class="error" *ngIf=" user.get('nombre').hasError('maxlength') && user.get('nombre').touched">
+            Superas el máximo de caracteres.
+          </div>
+  
+        </label>
+      </div>
+  
+      <div class="add2"> <label>Apellido:
+        <input type="text" #apellido id="apellido1" class="form-control mb-4" formControlName="apellido" placeholder="2-16 characters" />
+        <div class="error" *ngIf="user.get('apellido').hasError('required') && user.get('apellido').touched">
+          Apellido requerido.
+        </div>
+        <div class="error" *ngIf=" user.get('apellido').hasError('minlength') && user.get('apellido').touched">
+          No cumples con el mínimo de caracteres.
+        </div>
+
+        <div class="error" *ngIf=" user.get('apellido').hasError('maxlength') && user.get('apellido').touched">
+          Superas el máximo de caracteres.
+        </div>
+
+      </label>
+    </div>
+    <div class="add3"> <label>2nd apellido:
+        <input type="text" #apellido2 id="apellido2" class="form-control mb-4" formControlName="apellido2" placeholder="16 characters max" />
+
+        <div class="error" *ngIf=" user.get('apellido2').hasError('maxlength')">
+          Superas el máximo de caracteres.
+        </div>
+
+
+
+        <div class="add3"> <label>Correo:
+            <input type="email" #correo id="correo" class="form-control mb-4" formControlName="correo" placeholder="11-30 characters" />
+            <div class="error" *ngIf="user.get('correo').hasError('required') && user.get('correo').touched">
+              Correo requerido.
+            </div>
+            <div class="error" *ngIf=" user.get('correo').hasError('minlength') && user.get('correo').touched">
+              No cumples con el mínimo de caracteres.
+            </div>
+    
+            <div class="error" *ngIf=" user.get('correo').hasError('maxlength') && user.get('correo').touched">
+              Superas el máximo de caracteres.
+            </div>
+    
+          </label>
+        </div>
+
+
+      </label>
+    </div>
+  
+      <div class="add4">
+        <label>Telefono:
+          <input type="number" #telefono id="telefono" class="form-control mb-4" formControlName="telefono" placeholder="9 digits max" />
+  
+          <div class="error" *ngIf="user.get('telefono').hasError('required') && user.get('telefono').touched">
+            Telefono requerido.
+          </div>
+  
+        </label>
+      </div>
+
+      <div class="add5"> <label>Comentario:<br>
+        <textarea #comentario id="comentario" formControlName="comentario" class="form-control mb-4" placeholder="Danos tu opinion (200 caracteres max)"></textarea>
+
+        <div class="error" *ngIf="user.get('comentario').hasError('required') && user.get('comentario').touched">
+          Comentario requerido.
+        </div>
+
+        <div class="error" *ngIf=" user.get('comentario').hasError('maxlength') && user.get('comentario').touched">
+          Superas el máximo de caracteres.
+        </div>
+
+      </label>
+    </div>
+
+      <div>
+        <button mat-raised-button id="save" type="submit" color="info" [disabled]="user.invalid" rounded="true" outline ="true" block="true" class="z-depth-0 my-4 waves-effect" mdbWavesEffect
+          (click)=" add(nombre.value, apellido.value, apellido2.value, correo.value, telefono.value, comentario.value)">Enviar</button>
+      </div>
+    </form>
+  </div>
+
+
+  <app-footer></app-footer>

@@ -1,0 +1,48 @@
+
+<div class="body">
+ <div>
+    <img class="articles-img" src={{articles.images}}></div>
+
+ <h2>{{articles.title | uppercase}}</h2>
+ <div><span>{{articles.text}}</span></div>
+</div>
+
+ <div class="comentario">
+      <h2 class="com_title">Deja tu comentario</h2>
+
+              <form novalidate  class="text-center border border-light p-5" [formGroup]="user">
+                 <div>
+                          <input type="text" #nombre formControlName="nombre"  class="campo" placeholder="Nombre o correo" >
+                      </div>
+                          <textarea type="text" #comentario  formControlName="comentario" class="campo" placeholder="Comentario... (200 carácteres máx.)" >
+                  </textarea> 
+             <div>
+              <button mat-raised-button id="save" type="submit" color="info" [disabled]="user.invalid" rounded="true" outline ="true" block="true" class="z-depth-0 my-4 waves-effect" mdbWavesEffect
+              (click)="AnhadirNuevo(nombre.value, comentario.value)">Añadir</button>
+              </div> 
+            </form>
+
+  </div>
+
+  <br><br>
+
+  <h4>Comentarios ({{cantidad}})</h4>
+  <div class="comentarios" *ngFor="let comentario of comentarios">
+      <table class="tabla2">
+          <td><img class="img_user" src="assets/img/usuario_s.png"></td>
+          <td>
+              <h5>{{comentario.nombre}}</h5>
+              <p>{{comentario.comentario}}</p>
+          </td>
+      </table>
+  </div>
+  <div id="divBtn">
+ <button a routerLink="/home" id="btn">Ir a Home</button>
+</div>
+<!--<mat-nav-list>
+    <mat-list-item *ngFor="let link of links">
+       <button mat-icon-button (click)="showInfo(link)">
+          <mat-icon>info</mat-icon>
+       </button>
+    </mat-list-item>
+  </mat-nav-list>-->
