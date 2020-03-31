@@ -21,6 +21,9 @@
     <item name="teal" type="color">#009688</item>
     <item name="pink" type="color">#E91E63</item>
     <item name="gray" type="color">#795F5858</item>
+    <item name="stats" type="color">#CB984A</item>
+    <item name="statsBck" type="color">#6A4DA6</item>
+    <color name="statsText">#1A1B22</color>
 
     <integer-array name="initial_colors">
         <item>@color/blue</item>

@@ -6,7 +6,7 @@ public class Entrenamiento {
 
     private int id;
     private String nombre;
-    private Date fecha;
+    private String fecha;
     private int horas;
     private int minutos;
     private int segundos;
@@ -15,7 +15,7 @@ public class Entrenamiento {
     private String tipo;
     private int color_resource;
 
-    public Entrenamiento(String nombre, Date fecha, int horas, int minutos, int segundos, int kilometros, int metros, String tipo) {
+    public Entrenamiento(String nombre, String fecha, int horas, int minutos, int segundos, int kilometros, int metros, String tipo) {
         this.nombre = nombre;
         this.fecha = fecha;
         this.horas = horas;
@@ -42,14 +42,6 @@ public class Entrenamiento {
         this.tipo = tipo;
     }
 
-    public float minutosPorKilometro (){
-        return this.horas/this.kilometros;
-    }
-
-    public float kilometrosPorHora(){
-        return this.kilometros/this.horas;
-    }
-
     public String getNombre() {
         return nombre;
     }
@@ -58,11 +50,11 @@ public class Entrenamiento {
         this.nombre = nombre;
     }
 
-    public Date getFecha() {
+    public String getFecha() {
         return fecha;
     }
 
-    public void setFecha(Date fecha) {
+    public void setFecha(String fecha) {
         this.fecha = fecha;
     }
 
@@ -134,6 +126,5 @@ public class Entrenamiento {
     public String toString() {
         return "Nombre: " +nombre +" ; Tiempo: " + horas +" ; Distancia: "+ kilometros;
     }
-
 
 }

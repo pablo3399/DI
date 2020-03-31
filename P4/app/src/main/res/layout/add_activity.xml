@@ -72,7 +72,7 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Tiempo"
+        android:text="@string/tiempo"
         app:layout_constraintBottom_toTopOf="@+id/guideline12"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -91,7 +91,7 @@
             android:id="@+id/horas"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="no mas de dos digitos"
+            android:hint="Horas"
             android:inputType="number" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -108,7 +108,7 @@
             android:id="@+id/minutos"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="no mas de 60 minutos"
+            android:hint="Minutos"
             android:inputType="number" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -126,7 +126,7 @@
             android:id="@+id/segundos"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="no mas de 60 segundos"
+            android:hint="Segundos"
             android:inputType="number" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -134,7 +134,7 @@
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Distancia"
+        android:text="@string/distancia"
         app:layout_constraintBottom_toTopOf="@+id/guideline22"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -169,14 +169,14 @@
             android:id="@+id/metros"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="metros no mas de 999"
+            android:hint="Metros"
             android:inputType="number" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <RadioGroup
         android:id="@+id/tipo"
-        android:layout_width="132dp"
-        android:layout_height="92dp"
+        android:layout_width="130dp"
+        android:layout_height="140dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline25">
@@ -186,7 +186,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:checked="true"
-            android:text="Piscina grande"
+            android:text="@string/piscina_grande"
             tools:layout_editor_absoluteX="131dp"
             tools:layout_editor_absoluteY="597dp" />
 
@@ -194,7 +194,7 @@
             android:id="@+id/radioButton2"
             android:layout_width="131dp"
             android:layout_height="wrap_content"
-            android:text="Piscina media"
+            android:text="@string/piscina_media"
             tools:layout_editor_absoluteX="131dp"
             tools:layout_editor_absoluteY="597dp" />
 
@@ -202,7 +202,7 @@
             android:id="@+id/radioButton3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Aguas abiertas"
+            android:text="@string/aguas_abiertas"
             tools:layout_editor_absoluteX="131dp"
             tools:layout_editor_absoluteY="597dp" />
 
@@ -212,7 +212,7 @@
         android:id="@+id/aceptar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Aceptar"
+        android:text="@string/ok"
         app:layout_constraintBottom_toTopOf="@+id/guideline16"
         app:layout_constraintEnd_toStartOf="@+id/guideline2" />
 
@@ -220,7 +220,7 @@
         android:id="@+id/cancelar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Cancelar"
+        android:text="@string/cancelar"
         app:layout_constraintBottom_toTopOf="@+id/guideline16"
         app:layout_constraintStart_toStartOf="@+id/guideline4" />
 
@@ -228,7 +228,7 @@
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Nuevo Entrenamiento"
+        android:text="@string/add_title"
         android:textSize="@dimen/text_size"
         app:layout_constraintBottom_toTopOf="@+id/guideline"
         app:layout_constraintEnd_toEndOf="parent"
@@ -253,7 +253,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.32" />
+        app:layout_constraintGuide_percent="0.31" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline4"
@@ -288,7 +288,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.38" />
+        app:layout_constraintGuide_percent="0.37" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline13"
@@ -316,7 +316,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.41" />
+        app:layout_constraintGuide_percent="0.39" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline18"
@@ -337,28 +337,28 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.585" />
+        app:layout_constraintGuide_percent="0.56" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline23"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.61" />
+        app:layout_constraintGuide_percent="0.575" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline24"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.70" />
+        app:layout_constraintGuide_percent="0.68" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline25"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.74" />
+        app:layout_constraintGuide_percent="0.70" />
 
 
     <androidx.constraintlayout.widget.Guideline

@@ -8,6 +8,8 @@ import android.content.Intent;
 import android.util.Log;
 import android.view.ContextMenu;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewAnimationUtils;
 import android.view.ViewGroup;
@@ -28,6 +30,7 @@ public class RecycleViewAdapter extends RecyclerView.Adapter<RecycleViewAdapter.
         public Context context;
         private DBManager gestorDB;
         public ArrayList<Entrenamiento> listaEntrenamientos;
+    protected static final int CODIGO_EDITION_TRAINING = 102;
 
         public RecycleViewAdapter(Context context, ArrayList<Entrenamiento> listaEntrenamientos) {
             this.context = context;
@@ -133,13 +136,14 @@ public class RecycleViewAdapter extends RecyclerView.Adapter<RecycleViewAdapter.
         }
 
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnCreateContextMenuListener, MenuItem.OnMenuItemClickListener{
             private TextView initial;
             private TextView name;
             private Button deleteButton;
 
             public ViewHolder(View v) {
                 super(v);
+                v.setOnCreateContextMenuListener(this);
                 initial = (TextView) v.findViewById(R.id.initial);
                 name = (TextView) v.findViewById(R.id.name);
                 deleteButton = (Button) v.findViewById(R.id.delete_button);
@@ -162,23 +166,66 @@ public class RecycleViewAdapter extends RecyclerView.Adapter<RecycleViewAdapter.
                         Activity act = (AppCompatActivity) context;
                         options = ActivityOptionsCompat.makeSceneTransitionAnimation(act, p1, p2, p3);
 
-                        int requestCode = getAdapterPosition();
-                        String name = listaEntrenamientos.get(requestCode).getNombre();
-                        int color = listaEntrenamientos.get(requestCode).getColorResource();
+                        editCard(getAdapterPosition());
+                        /*
+                            int requestCode = getAdapterPosition();
+                            String name = listaEntrenamientos.get(requestCode).getNombre();
+                            int color = listaEntrenamientos.get(requestCode).getColorResource();
 
-                        Log.d(DEBUG_TAG, "SampleMaterialAdapter itemView listener for Edit adapter position " + requestCode);
+                            Log.d(DEBUG_TAG, "SampleMaterialAdapter itemView listener for Edit adapter position " + requestCode);
 
-                        Intent transitionIntent = new Intent(context, AddActivity.class);
-                        transitionIntent.putExtra(MainActivity.EXTRA_NAME, name);
-                        transitionIntent.putExtra(MainActivity.EXTRA_INITIAL, Character.toString(name.charAt(0)));
-                        transitionIntent.putExtra(MainActivity.EXTRA_COLOR, color);
-                        transitionIntent.putExtra(MainActivity.EXTRA_UPDATE, false);
-                        transitionIntent.putExtra(MainActivity.EXTRA_DELETE, false);
-                        ((AppCompatActivity) context).startActivityForResult(transitionIntent, requestCode, options.toBundle());
+                            Intent transitionIntent = new Intent(context, AddActivity.class);
+                            transitionIntent.putExtra(MainActivity.EXTRA_NAME, name);
+                            transitionIntent.putExtra(MainActivity.EXTRA_INITIAL, Character.toString(name.charAt(0)));
+                            transitionIntent.putExtra(MainActivity.EXTRA_COLOR, color);
+                            transitionIntent.putExtra(MainActivity.EXTRA_UPDATE, false);
+                            transitionIntent.putExtra(MainActivity.EXTRA_DELETE, false);
+                            ((AppCompatActivity) context).startActivityForResult(transitionIntent, requestCode, options.toBundle());
+                        */
                     }
                 });
             }
+                @Override
+                public boolean onMenuItemClick(MenuItem item) {
+
+                    switch (item.getItemId()){
+                        case 1:
+                            editCard(getAdapterPosition());
+                            break;
+                        case 2:
+                            deleteCard(itemView, getAdapterPosition());
+                            break;
+
+                    }
+                    return true;
+                }
+
+                @Override
+                public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+                    MenuItem modificar = menu.add(Menu.NONE, 1, 1, "Modificar");
+                    modificar.setOnMenuItemClickListener(this);
+                    MenuItem borrar= menu.add(Menu.NONE, 2, 2,"Borrar");
+                    borrar.setOnMenuItemClickListener(this);
+                }
+
         }
 
-    }
+    public void editCard(int pos){
+
+        Intent subActividad = new Intent( context, AddActivity.class );
+        subActividad.putExtra( "id", listaEntrenamientos.get(pos).getId() );
+        subActividad.putExtra( "nombre", listaEntrenamientos.get(pos).getNombre() );
+        subActividad.putExtra( "fecha", listaEntrenamientos.get(pos).getFecha() );
+        subActividad.putExtra( "horas", listaEntrenamientos.get(pos).getHoras() );
+        subActividad.putExtra( "minutos", listaEntrenamientos.get(pos).getMinutos() );
+        subActividad.putExtra( "segundos", listaEntrenamientos.get(pos).getSegundos() );
+        subActividad.putExtra( "kilometros", listaEntrenamientos.get(pos).getKilometros() );
+        subActividad.putExtra( "metros", listaEntrenamientos.get(pos).getMetros() );
+        subActividad.putExtra( "tipo", listaEntrenamientos.get(pos).getTipo() );
+
+        ((AppCompatActivity) context).startActivityForResult( subActividad, CODIGO_EDITION_TRAINING );
+        }
+}
+
+
 

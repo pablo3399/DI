@@ -4,5 +4,7 @@
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="padding">16dp</dimen>
     <dimen name="text_size">26sp</dimen>
+    <dimen name="text_size_nadador">18sp</dimen>
+    <dimen name="text_size_stats">32sp</dimen>
     <dimen name="initial_size">100sp</dimen>
 </resources>

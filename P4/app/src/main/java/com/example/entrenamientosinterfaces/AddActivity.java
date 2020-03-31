@@ -2,7 +2,6 @@ package com.example.entrenamientosinterfaces;
 
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
@@ -22,11 +21,15 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import com.niwattep.materialslidedatepicker.SlideDatePickerDialog;
+import com.niwattep.materialslidedatepicker.SlideDatePickerDialogCallback;
+
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Random;
 import java.util.regex.Pattern;
 
-public class AddActivity extends AppCompatActivity {
+public class AddActivity extends AppCompatActivity implements SlideDatePickerDialogCallback {
 
     int id = -1;
     protected static final int CODIGO_ADITION_TRAINING = 100;
@@ -35,11 +38,11 @@ public class AddActivity extends AppCompatActivity {
     private Random randomGenerator = new Random();
     private TextView initialTextView;
     private String fcha;
-
-    final Calendar c = Calendar.getInstance();
-    final int mesFin = c.get(Calendar.MONTH)+1;
-    final int diaFin = c.get(Calendar.DAY_OF_MONTH);
-    final int anioFin = c.get(Calendar.YEAR);
+    private final Calendar c = Calendar.getInstance();
+    private final int mesFin = c.get(Calendar.MONTH) + 1;
+    private final int diaFin = c.get(Calendar.DAY_OF_MONTH);
+    private final int anioFin = c.get(Calendar.YEAR);
+    private Button btFecha;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,7 +57,7 @@ public class AddActivity extends AppCompatActivity {
         final Button btAceptar = (Button) this.findViewById( R.id.aceptar );
         final Button btCancelar = (Button) this.findViewById( R.id.cancelar );
         final EditText edNombre = (EditText) this.findViewById( R.id.nombre );
-        final Button btFecha = (Button) this.findViewById(R.id.fecha);
+         btFecha = (Button) this.findViewById(R.id.fecha);
         final EditText edHoras = (EditText) this.findViewById( R.id.horas );
         final EditText edMinutos = (EditText) this.findViewById( R.id.minutos );
         final EditText edSegundos = (EditText) this.findViewById( R.id.segundos );
@@ -74,13 +77,27 @@ public class AddActivity extends AppCompatActivity {
         limiteDistancia[0] = new InputFilter.LengthFilter(3);
 
         edNombre.setFilters(limiteNombre);
+        btFecha.setText(diaFin+"/"+mesFin+"/"+anioFin);
         edHoras.setFilters(limiteTiempo);
         edMinutos.setFilters(limiteTiempo);
         edSegundos.setFilters(limiteTiempo);
         edKilometros.setFilters(limiteDistancia);
         edMetros.setFilters(limiteDistancia);
 
-        btFecha.setText(diaFin + "/" + mesFin + "/" + anioFin);
+        btFecha.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Calendar date= Calendar.getInstance();
+                date.set(Calendar.YEAR, 2030);
+
+                SlideDatePickerDialog.Builder builder = new SlideDatePickerDialog.Builder();
+                builder.setEndDate(date);
+                SlideDatePickerDialog dialog = builder.build();
+                dialog.show(getSupportFragmentManager(), "Dialog");
+
+            }
+        });
 
         btBack.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -99,42 +116,30 @@ public class AddActivity extends AppCompatActivity {
 
             if(this.id!=-1) {
             final String nombre2 = transitionIntent.getExtras().getString("nombre", "ERROR");
-            final String fecha2 = transitionIntent.getExtras().getString("fecha", "1/1/1999");
+            final String fecha2 = transitionIntent.getExtras().getString("fecha", "1-1-1999");
             final int horas2 = transitionIntent.getExtras().getInt("horas", 0);
             final int minutos2 = transitionIntent.getExtras().getInt("minutos", 0);
             final int segundos2 = transitionIntent.getExtras().getInt("segundos", 0);
             final int kilometros2 = transitionIntent.getExtras().getInt("kilometros", 0);
             final int metros2 = transitionIntent.getExtras().getInt("metros", 0);
 
-        edNombre.setText(nombre2);
+            edNombre.setText(nombre2);
 
-                btFecha.setOnClickListener(new View.OnClickListener(){
-
+            btFecha.setText(fecha2);
+                btFecha.setOnClickListener(new View.OnClickListener() {
                     @Override
-                    public void onClick(View v){
+                    public void onClick(View v) {
 
-                        String parts[] = fecha2.trim().split("/",3);
+                        Calendar date= Calendar.getInstance();
+                        date.set(Calendar.YEAR, 2030);
 
-                        final int part0 = Integer.parseInt(parts[0]);
-                        final int part1 = Integer.parseInt(parts[1])-1;
-                        final int part2 = Integer.parseInt(parts[2]);
+                        SlideDatePickerDialog.Builder builder = new SlideDatePickerDialog.Builder();
+                        builder.setEndDate(date);
+                        SlideDatePickerDialog dialog = builder.build();
+                        dialog.show(getSupportFragmentManager(), "Dialog");
 
-                        DatePickerDialog dlg = new DatePickerDialog(AddActivity.this,
-                                new DatePickerDialog.OnDateSetListener() {
-                                    @Override
-                                    public void onDateSet(DatePicker dp, int y, int m, int d) {
-
-                                        final String date = d + "/" + (m+1) + "/" + y;
-                                        fcha = date;
-
-                                        btFecha.setText("Fecha: "+ date);
-
-                                    }
-                                },
-                                part2, part1, part0
-                        );
-                        dlg.show();
-                    }});
+                    }
+                });
 
         edHoras.setText(String.valueOf(horas2));
         edMinutos.setText(String.valueOf(minutos2));
@@ -160,6 +165,11 @@ public class AddActivity extends AppCompatActivity {
                 boolean noParseo = true;
                 try{
                     Integer.parseInt(edHoras.getText().toString());
+                    Integer.valueOf(edMinutos.getText().toString());
+                    Integer.valueOf(edSegundos.getText().toString());
+                    Integer.valueOf(edKilometros.getText().toString());
+                    Integer.valueOf(edMetros.getText().toString());
+
                 }catch(NumberFormatException e){
                     noParseo=false;
                 }
@@ -169,22 +179,30 @@ public class AddActivity extends AppCompatActivity {
 
                     AlertDialog.Builder err = new AlertDialog.Builder(AddActivity.this);
 
-                    if (edNombre.getText().toString().trim().isEmpty()) {
+                    try {
+                        if (edNombre.getText().toString().trim().isEmpty()) {
+                            err.setTitle("Error, No name");
+                        } else if (Integer.valueOf(edHoras.getText().toString()) > 24) {
+                            err.setTitle("Error, max 24H");
+                        } else if (Integer.valueOf(edMinutos.getText().toString()) > 60) {
+                            err.setTitle("Error, max 60M");
+                        } else if (Integer.valueOf(edSegundos.getText().toString()) > 60) {
+                            err.setTitle("Error, max 60S");
+                        } else if (Integer.valueOf(edKilometros.getText().toString()) > 999) {
+                            err.setTitle("Error, max 999KM");
+                        } else if (Integer.valueOf(edMetros.getText().toString()) > 999) {
+                            err.setTitle("Error, max 999M");
+                        }
 
-                        err.setTitle("Error, campo nombre vacío");
-                    } /*else if (edApellido.getText().toString().trim().isEmpty()) {
-                        err.setTitle("Error, campo apellido vacío");
-                    } else if (edTelefono.getText().toString().trim().isEmpty()) {
-                        err.setTitle("Error, campo telefono vacío");
-                    } else if (edEmail.getText().toString().trim().isEmpty()) {
-                        err.setTitle("Error, campo email vacío");
-                    }else if(comprobar == false) {
-                        err.setTitle("Campo email no válido");
-                    }else if(noParseo == false) {
-                        err.setTitle("Campo telefono no válido");
-                    }*/
+                    }catch (NumberFormatException e){
+                        AlertDialog.Builder err2 = new AlertDialog.Builder(AddActivity.this);
+                        err2.setMessage("Campo vacio");
+                        err2.setNeutralButton("OK", null);
+                        err2.create().show();
+                    }
 
                     err.setNeutralButton("OK", null);
+
                     err.create().show();
 
                 } else {
@@ -229,4 +247,10 @@ public class AddActivity extends AppCompatActivity {
 
     private DBManager gestorDB;
 
+    @Override
+    public void onPositiveClick(int i, int i1, int i2, Calendar calendar) {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        btFecha.setText(dateFormat.format(calendar.getTime()));
+        fcha=btFecha.getText().toString();
+    }
 }

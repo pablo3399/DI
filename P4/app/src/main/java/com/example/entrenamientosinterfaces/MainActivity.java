@@ -11,6 +11,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.util.Log;
@@ -18,12 +19,11 @@ import android.view.ContextMenu;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-import java.sql.Date;
 import java.util.ArrayList;
+
 
 public class MainActivity extends AppCompatActivity {
 
@@ -36,11 +36,8 @@ public class MainActivity extends AppCompatActivity {
     protected static final int CODIGO_CONFIGURACION = 103;
     private int positionF;
 
-    public static final String EXTRA_UPDATE = "update";
-    public static final String EXTRA_DELETE = "delete";
     public static final String EXTRA_NAME = "name";
     public static final String EXTRA_COLOR = "color";
-    public static final String EXTRA_INITIAL = "initial";
 
     public static final String TRANSITION_FAB = "fab_transition";
     public static final String TRANSITION_INITIAL = "initial_transition";
@@ -169,8 +166,7 @@ public class MainActivity extends AppCompatActivity {
             while(cursor.moveToNext()){
                 int id = cursor.getInt((cursor.getColumnIndex(DBManager.ENTRENAMIENTO_COL_ID)));
                 String dato1=cursor.getString((cursor.getColumnIndex(DBManager.ENTRENAMIENTO_COL_NOMBRE )));
-                Date fecha = new Date(cursor.getColumnIndex(DBManager.ENTRENAMIENTO_COL_FECHA));
-                Date dato2 = fecha;
+                String dato2 = cursor.getString(cursor.getColumnIndex(DBManager.ENTRENAMIENTO_COL_FECHA));
                 int dato3=cursor.getInt((cursor.getColumnIndex(DBManager.ENTRENAMIENTO_COL_HORAS )));
                 int dato4=cursor.getInt((cursor.getColumnIndex(DBManager.ENTRENAMIENTO_COL_MINUTOS )));
                 int dato5=cursor.getInt((cursor.getColumnIndex(DBManager.ENTRENAMIENTO_COL_SEGUNDOS )));
@@ -184,48 +180,13 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    //menu contextual
-    @Override
-    public void onCreateContextMenu(ContextMenu contextMenu, View view, ContextMenu.ContextMenuInfo cmi)
-    {
-        if ( view.getId() == R.id.card_layout)
-        {
-            this.getMenuInflater().inflate( R.menu.context_menu, contextMenu );
-            // contextMenu.setHeaderTitle( R.string.menuC );
-        }
-    }
-
-    @Override
-    public boolean onContextItemSelected(MenuItem menuItem)
-    {
-        boolean toret = false;
-        AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) menuItem.getMenuInfo();
-        int index = info.position;
-
-        switch( menuItem.getItemId() ) {
-            case R.id.context_modify:
-                Intent subActividad = new Intent( MainActivity.this, AddActivity.class );
-                subActividad.putExtra( "pos", index );
-                MainActivity.this.startActivityForResult( subActividad, CODIGO_EDITION_TRAINING );
-                toret = true;
-                break;
-            case R.id.context_delete:
-                gestorDB.eliminarEntrenamiento(index);
-                adapter.deleteCard(recyclerView, index);
-                toret = true;
-                break;
-        }
-
-        return toret;
-    }
-
     //menu de opciones
     @Override
     public boolean onCreateOptionsMenu(Menu menu)
     {
         super.onCreateOptionsMenu( menu );
-
         this.getMenuInflater().inflate( R.menu.actions_menu, menu );
+
         return true;
     }
 
@@ -238,7 +199,6 @@ public class MainActivity extends AppCompatActivity {
         for(int x = 0; x<listaEntrenamientos.size(); x++){
 
             listItems[x]=listaEntrenamientos.get(x).getNombre();
-
         }
 
         switch( menuItem.getItemId() ) {
@@ -348,4 +308,5 @@ public class MainActivity extends AppCompatActivity {
         MainActivity.this.startActivityForResult( subActividad, CODIGO_EDITION_TRAINING );
 
     }
+
 }

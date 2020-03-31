@@ -47,7 +47,7 @@
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Configuración"
+        android:text="@string/confg"
         android:textSize="@dimen/text_size"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -57,7 +57,7 @@
         android:id="@+id/textViewN"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Nombre"
+        android:text="@string/Nombre"
         app:layout_constraintBottom_toTopOf="@+id/guideline6"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -82,7 +82,7 @@
         android:id="@+id/tvEdad"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="edad"
+        android:text="@string/Edad"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline10" />
@@ -107,7 +107,7 @@
         android:id="@+id/tvNacionalidad"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Nacionalidad"
+        android:text="@string/Nacionalidad"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline19" />
@@ -148,7 +148,7 @@
             android:id="@+id/radioEspañol"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="español"
+            android:text="@string/Español"
             tools:layout_editor_absoluteX="131dp"
             tools:layout_editor_absoluteY="597dp" />
 
@@ -156,7 +156,7 @@
             android:id="@+id/radioIngles"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="ingles"
+            android:text="@string/Ingles"
             tools:layout_editor_absoluteX="131dp"
             tools:layout_editor_absoluteY="597dp" />
 
@@ -166,7 +166,7 @@
         android:id="@+id/aceptar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Aceptar"
+        android:text="@string/ok"
         app:layout_constraintBottom_toTopOf="@+id/guideline32"
         app:layout_constraintEnd_toStartOf="@+id/guideline31" />
 
@@ -174,7 +174,7 @@
         android:id="@+id/cancelar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Cancelar"
+        android:text="@string/cancelar"
         app:layout_constraintBottom_toTopOf="@+id/guideline32"
         app:layout_constraintStart_toStartOf="@+id/guideline30" />
 

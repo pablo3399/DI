@@ -1,6 +1,8 @@
 package com.example.entrenamientosinterfaces;
 
 import android.app.Activity;
+import android.content.Intent;
+import android.content.res.Configuration;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
@@ -11,6 +13,8 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import java.util.Locale;
 
 
 public class ConfiguracionActivity extends AppCompatActivity {
@@ -79,6 +83,26 @@ public class ConfiguracionActivity extends AppCompatActivity {
                 } else if (radioIng.isChecked()){
                     lenguaje="ingles";
                 }
+
+                Locale locale;
+                Configuration config = new Configuration();
+
+                switch (lenguaje) {
+                    case "español":
+                         locale = new Locale("es");
+                        config.locale = locale;
+                        break;
+                    case "ingles":
+                        locale = new Locale("en");
+                        config.locale = locale;
+                        break;
+                }
+                getResources().updateConfiguration(config, null);
+                Intent refresh = new Intent(ConfiguracionActivity.this, MainActivity.class);
+                startActivity(refresh);
+                finish();
+
+
                 gestorDB.modificarConfiguration(id, nombre, edad, nacionalidad, lenguaje);
                 gestorDB.close();
                 ConfiguracionActivity.this.finish();

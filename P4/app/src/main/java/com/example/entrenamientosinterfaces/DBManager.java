@@ -8,8 +8,6 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
-import java.sql.Date;
-
 
 public class DBManager extends SQLiteOpenHelper {
     public static final String DB_NOMBRE = "ListaEntrenamientos";
@@ -109,6 +107,8 @@ public class DBManager extends SQLiteOpenHelper {
         return this.getReadableDatabase().query(TABLA_CONFIGURATION,
                 null, null, null, null, null, null);
     }
+
+
 
     public void modificarConfiguration(int id, String nombre, int edad, String nacionalidad, String lenguaje){
 

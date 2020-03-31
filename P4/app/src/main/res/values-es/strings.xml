@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Entrenamientos de nadador</string>
+    <string name="Edad">Edad</string>
+    <string name="Español">español</string>
+    <string name="Ingles">ingles</string>
+    <string name="Nacionalidad">Nacionalidad</string>
+    <string name="Nombre">Nombre</string>
+    <string name="add_button">Añadir</string>
+    <string name="add_title">Nuevo Entrenamiento</string>
+    <string name="aguas_abiertas">Aguas abiertas</string>
+    <string name="anhadir">Añadir</string>
+    <string name="cancelar">Cancelar</string>
+    <string name="conf">Configuración</string>
+    <string name="confg">Configuración</string>
+    <string name="delete_button">Borrar</string>
+    <string name="distancia">Distancia</string>
+    <string name="eliminar">Eliminar</string>
+    <string name="errores">Errores</string>
+    <string name="fab">Añadir</string>
+    <string name="modificar">Modificar</string>
+    <string name="ok">Aceptar</string>
+    <string name="piscina_grande">Piscina grande</string>
+    <string name="piscina_media">Piscina media</string>
+    <string name="stats">Estadísticas</string>
+    <string name="tiempo">Tiempo</string>
+    <string name="title_activity_conf">Informacion del usuario</string>
+    <string name="title_activity_stats">Estadísticas generales</string>
+    <string name="title_activity_transition_add">Añadir Entrenamiento</string>
+    <string name="titulo_stats">Estadísticas</string>
+    <string name="update_button">Editar</string>
+</resources>

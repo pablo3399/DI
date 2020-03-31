@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Swimmer training</string>
+    <string name="Edad">Age</string>
+    <string name="update_button">Edit</string>
+    <string name="Español">Spanish</string>
+    <string name="Ingles">English</string>
+    <string name="Nombre">Name</string>
+    <string name="add_button">Add</string>
+    <string name="add_title">Add Training</string>
+    <string name="anhadir">Add</string>
+    <string name="cancelar">Cancel</string>
+    <string name="conf">Configuration</string>
+    <string name="confg">Configuration</string>
+    <string name="delete_button">Erase</string>
+    <string name="distancia">Distance</string>
+    <string name="eliminar">Delete</string>
+    <string name="errores">Errors</string>
+    <string name="fab">Add</string>
+    <string name="modificar">Modify</string>
+    <string name="ok">Accept</string>
+    <string name="stats">Statistics</string>
+    <string name="tiempo">Time</string>
+    <string name="title_activity_conf">User Information</string>
+    <string name="title_activity_stats">General Statistics</string>
+    <string name="title_activity_transition_add">Add Training</string>
+    <string name="titulo_stats">Statistics</string>
+    <string name="Nacionalidad">nationality</string>
+    <string name="aguas_abiertas">Open waters</string>
+    <string name="piscina_grande">Big pool</string>
+    <string name="piscina_media">Small pool</string>
+</resources>
